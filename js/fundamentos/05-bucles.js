@@ -103,8 +103,8 @@ if (acierto === false) {
 //mostrar por consola la tabla
 let tablita = parseInt(prompt("Ingrese la tablita a calcular"));
 
-for (let index = 1; index <= 10; index++) {
-  console.log(`${tablita} x ${index} = ${tablita * index}`);
+for (let i = 1; i <= 10; i++) {
+  console.log(`${tablita} x ${i} = ${tablita * i}`);
 }
 
 while (tabla) {

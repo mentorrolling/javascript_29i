@@ -90,3 +90,21 @@ function obtenerNombreConLetra(letra) {
 }
 
 console.log(obtenerNombreConLetra("m"));
+
+/*
+Tarea 3
+----------
+Tomar una lista de lenguajes de programación y mostrar en consola una lista ordenada con los nombres ordenados alfabéticamente y en mayúsculas sin mutar el arreglo original.
+
+*/
+
+let lenguajes = ["javascript", "python", "c++", "c#", "java", ".net"];
+
+function ordenarLenguajes() {
+  //definir un nuevo arreglo
+  //ordenarlos por orden alfabético
+  //en mayusculas
+  // en una lista ordenada
+  //1-javascript
+  //2-java
+}

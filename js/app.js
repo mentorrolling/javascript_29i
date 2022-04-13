@@ -1,119 +1,92 @@
-//Funciones
+//Callbacks
+//son funciones que se envian como parámetros y se ejecutan despues de un método.
 
-//son procedimientos encapsulados
+const numeros = [37, 11, 2, 15, 26, 52, 48, 8, 100];
 
-// function <nombre>(<parametros>){
+let numerosOrdenados = numeros.sort(function (a, b) {
+  return a - b;
+});
 
-//instrucciones o lo que hará
+//filter
+//El método filter() crea un nuevo array con todos los elementos que cumplan la condición implementada por la función dada.
 
-// }
+let pares = numeros.filter(function (numero) {
+  return numero % 2 === 0;
+});
 
-//funciones declarativas
+let mayor10 = numeros.filter(function (num) {
+  return num > 10;
+});
 
-let nombre = "Santiago";
-let apellido = "Gonzalez";
+//find
+//El método find() devuelve el valor del primer elemento del array que cumple la condición del callback
+let alumnos = ["Lucas", "Pablo", "Fabrizio", "Jorge", "Lucas"];
 
-function saludarPersona(parametro1, parametro2) {
-  // console.log("Hola persona!");
-  console.log(`Hola ${parametro1} ${parametro2}!`);
+let resultadoBusqueda = alumnos.find(function (alumno) {
+  return alumno === "Lucas";
+});
+
+let resultadoBusquedaNumeros = numeros.find(function (numero) {
+  return numero < 10;
+});
+
+//map
+//El método map() crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.
+let numerosDobles = numeros.map(function (num) {
+  return num * 2;
+});
+
+let nombresMayus = alumnos.map(function (alumno) {
+  return alumno.toUpperCase();
+});
+
+//forEach
+// alumnos.forEach(function (alumno) {
+//   let nombreMayuscula = alumno.toUpperCase();
+//   console.log("Hola, soy", nombreMayuscula);
+// });
+
+/* Tarea 1
+-----------
+Dado 3 arreglos de números unir todos en uno solo y ordenarlos de mayor a menor
+
+*/
+let numeros1 = [13, 456, 786, 23, 45];
+let numeros2 = [67, 3, 5];
+let numeros3 = [90, 1245, 56000];
+
+function ejercicio1() {
+  let numerosParaOrdenar = numeros1.concat(numeros2, numeros3);
+
+  numerosParaOrdenar.sort(function (a, b) {
+    return b - a;
+  });
+
+  console.log(numerosParaOrdenar);
 }
 
-saludarPersona(nombre, apellido);
+/*
+Tarea 2
+---------
+  Filtrar de un arreglo de personas todos los nombres que contengan la letra "m"
+*/
 
-function sumarValores(valor1, valor2) {
-  if (isNaN(valor1) || isNaN(valor2)) {
-    console.warn("Alguno de los valores no es correcto ");
-  } else {
-    console.log(`${valor1} + ${valor2} = ${valor1 + valor2}`);
-  }
+let personas = [
+  "Joaquín",
+  "Daniel",
+  "Magdalena",
+  "Gonzalo",
+  "Armando",
+  "Samuel",
+  "Valentina",
+];
+
+function obtenerNombreConLetra(letra) {
+  let nombres = personas.filter(function (nombre) {
+    return nombre.toUpperCase().includes(letra.toUpperCase());
+  });
+
+  return nombres;
 }
 
-let num1 = 35;
-let num2 = 78;
-
-sumarValores(num1, num2);
-
-//funciones anónimas o de expresión
-
-const multiplicacion = function () {
-  console.log(num1 * num2);
-};
-
-const calculadora = function (valor1, valor2, operacion = "+") {
-  if (isNaN(valor1) || isNaN(valor2)) {
-    console.warn("Falta un valor requerido o es incorrecto");
-  } else {
-    switch (operacion) {
-      case "+":
-        console.log(`${valor1} + ${valor2} = ${valor1 + valor2}`);
-        break;
-      case "-":
-        console.log(`${valor1} - ${valor2} = ${valor1 - valor2}`);
-        break;
-      case "*":
-        console.log(`${valor1} x ${valor2} = ${valor1 * valor2}`);
-        break;
-      case "/":
-        console.log(`${valor1} / ${valor2} = ${valor1 / valor2}`);
-        break;
-      default:
-        console.warn("La operación ingresada no es válida");
-        break;
-    }
-  }
-};
-
-//return
-const calculadoraReturn = function (valor1, valor2, operacion = "+") {
-  if (isNaN(valor1) || isNaN(valor2)) {
-    return "Falta un valor requerido o es incorrecto";
-  }
-
-  switch (operacion) {
-    case "+":
-      return `${valor1} + ${valor2} = ${valor1 + valor2}`;
-
-    case "-":
-      return `${valor1} - ${valor2} = ${valor1 - valor2}`;
-
-    case "*":
-      return `${valor1} x ${valor2} = ${valor1 * valor2}`;
-
-    case "/":
-      return `${valor1} / ${valor2} = ${valor1 / valor2}`;
-
-    default:
-      return "La operación ingresada no es válida";
-  }
-};
-
-//podemos llamar una funcion dentro de otra
-
-function cubo(num) {
-  return Math.pow(num, 3);
-}
-
-let numeros = [23, 45, 2, 79];
-
-function convertirACubo(arreglo, funcion) {
-  let numerosAlCubo = [];
-
-  for (let index = 0; index < arreglo.length; index++) {
-    let numeroAlCubo = funcion(arreglo[index]);
-    numerosAlCubo.push(numeroAlCubo);
-  }
-
-  return numerosAlCubo;
-}
-
-console.log(convertirACubo(numeros, cubo));
-
-//Scope de una función
-let heroe = "Superman";
-
-function presentarHeroe() {
-  let heroe = "Batman";
-  // heroe ='Aquaman'
-  return `Bienvenido ${heroe}`;
-}
-console.log(presentarHeroe());
+console.log(obtenerNombreConLetra("m"));

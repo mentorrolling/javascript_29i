@@ -1,110 +1,76 @@
-//Callbacks
-//son funciones que se envian como parámetros y se ejecutan despues de un método.
+//Objetos
 
-const numeros = [37, 11, 2, 15, 26, 52, 48, 8, 100];
+let alumno = {
+  nombre: "Josefina Alvarez",
+  edad: 38,
+  dni: 29548728,
+  curso: "Fullstack",
+  saludar: function () {
+    console.log(`Hola! soy ${this.nombre}`);
+  },
+  calcularVejez: function () {
+    if (this.edad > 35) {
+      console.log("Tamos cerca de los 40 amig@ 😞");
+    } else {
+      console.log("Tranquilo todavía hay esperanza 🤩");
+    }
+  },
+};
 
-let numerosOrdenados = numeros.sort(function (a, b) {
-  return a - b;
-});
+//Obtener valores
+console.log(alumno.nombre);
+console.log(alumno["curso"]);
 
-//filter
-//El método filter() crea un nuevo array con todos los elementos que cumplan la condición implementada por la función dada.
+//Agregar una nueva propiedad al objeto
+alumno.domicilio = "Esquina Norte";
 
-let pares = numeros.filter(function (numero) {
-  return numero % 2 === 0;
-});
+//Modificar un valor de alguna propiedad
+alumno.nombre = "Josefina Gonzalez";
 
-let mayor10 = numeros.filter(function (num) {
-  return num > 10;
-});
+//Elimino una propiedad del objeto
+delete alumno.edad;
 
-//find
-//El método find() devuelve el valor del primer elemento del array que cumple la condición del callback
-let alumnos = ["Lucas", "Pablo", "Fabrizio", "Jorge", "Lucas"];
-
-let resultadoBusqueda = alumnos.find(function (alumno) {
-  return alumno === "Lucas";
-});
-
-let resultadoBusquedaNumeros = numeros.find(function (numero) {
-  return numero < 10;
-});
-
-//map
-//El método map() crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.
-let numerosDobles = numeros.map(function (num) {
-  return num * 2;
-});
-
-let nombresMayus = alumnos.map(function (alumno) {
-  return alumno.toUpperCase();
-});
-
-//forEach
-// alumnos.forEach(function (alumno) {
-//   let nombreMayuscula = alumno.toUpperCase();
-//   console.log("Hola, soy", nombreMayuscula);
-// });
-
-/* Tarea 1
------------
-Dado 3 arreglos de números unir todos en uno solo y ordenarlos de mayor a menor
-
-*/
-let numeros1 = [13, 456, 786, 23, 45];
-let numeros2 = [67, 3, 5];
-let numeros3 = [90, 1245, 56000];
-
-function ejercicio1() {
-  let numerosParaOrdenar = numeros1.concat(numeros2, numeros3);
-
-  numerosParaOrdenar.sort(function (a, b) {
-    return b - a;
-  });
-
-  console.log(numerosParaOrdenar);
+//Como puedo recorrer un objeto
+for (const atributo in alumno) {
+  if (atributo !== "saludar" && atributo !== "calcularVejez") {
+    console.log(`${atributo}: ${alumno[atributo]}`);
+  }
 }
 
 /*
-Tarea 2
----------
-  Filtrar de un arreglo de personas todos los nombres que contengan la letra "m"
+1- Objeto Persona con las propiedades nombre, edad y género, y el método obtDetalles(), que muestra por pantalla las propiedades de la persona.
 */
 
-let personas = [
-  "Joaquín",
-  "Daniel",
-  "Magdalena",
-  "Gonzalo",
-  "Armando",
-  "Samuel",
-  "Valentina",
-];
-
-function obtenerNombreConLetra(letra) {
-  let nombres = personas.filter(function (nombre) {
-    return nombre.toUpperCase().includes(letra.toUpperCase());
-  });
-
-  return nombres;
-}
-
-console.log(obtenerNombreConLetra("m"));
+let persona = {
+  nombre: "Florencia Espeche",
+  edad: 34,
+  genero: "Femenino",
+  obtDetalles: function () {
+    for (const propiedad in this) {
+      if (propiedad !== "obtDetalles") {
+        console.log(`${propiedad}:${this[propiedad]}`);
+      }
+    }
+  },
+};
 
 /*
-Tarea 3
-----------
-Tomar una lista de lenguajes de programación y mostrar en consola una lista ordenada con los nombres ordenados alfabéticamente y en mayúsculas sin mutar el arreglo original.
+2- Crea un objeto llamado auto que tenga algunas características como el color, marca, modelo y si está encendido o apagado. Crea los métodos necesarios para permitir encender y apagar el auto.
 
 */
 
-let lenguajes = ["javascript", "python", "c++", "c#", "java", ".net"];
-
-function ordenarLenguajes() {
-  //definir un nuevo arreglo
-  //ordenarlos por orden alfabético
-  //en mayusculas
-  // en una lista ordenada
-  //1-javascript
-  //2-java
-}
+let auto = {
+  color: "rojo",
+  marca: "Fiat",
+  modelo: "Palio",
+  anio: 2018,
+  encendido: false,
+  encenderApagar: function () {
+    this.encendido = !this.encendido;
+    if (this.encendido) {
+      console.log("El vehículo está encendido");
+    } else {
+      console.log("El vehículo está apagado");
+    }
+  },
+};

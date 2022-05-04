@@ -1,59 +1,108 @@
-//BOM
-//Browser Object Model
+//DOM
+// DOCUMENT OBJECT MODEL
 
-// window
+//obtener elemento por su etiqueta
+let titulo1 = document.getElementsByTagName("h1");
 
-//Navigator
-const obtenerUbicacion = function () {
-  navigator.geolocation.getCurrentPosition(function (posicion) {
-    console.log(posicion.coords.latitude, posicion.coords.longitude);
-  });
-};
+//obtener elemento por su id
+let titulo2 = document.getElementById("title");
 
-//Location
+//obtener elemento por su clase
+let titulo3 = document.getElementsByClassName("titulo_bonito");
 
-// location.reload() //recargar la página
-// location.href="https://google.com"
-// location.assign('https://google.com')
+let parrafo1 = document.querySelector("h3");
+let parrafo2 = document.querySelector("#parrafito");
+let parrafo3 = document.querySelector(".text-center");
 
-// location.replace('https://rollingcodeschool.com')
+//cambiar el valor de un elemento
+titulo2.innerText = "Bienvenidos al DOM";
+parrafo2.innerText = "Clase práctica de javascript";
 
-//history
-// history.go(1) //me lleva a la página siguiente en el historial
-// history.go(-2) //me lleva dos páginas para atras en el historial
+//Agregar un elemento al DOM
+let nuevoParrafo = document.createElement("p");
+nuevoParrafo.innerText = "Esto es un párrafo creado con javascript";
 
-//Funciones de tiempo
+document.body.appendChild(nuevoParrafo);
 
-//setTimeout
-//nos permite ejecutar acciones DESPUÉS de transcurrido un cierto tiempo
+let imagen = document.createElement("img");
+imagen.src =
+  "https://imagenes.razon.com.mx/files/image_940_470/uploads/2020/06/03/5ed7fc823c5e8.jpeg";
+imagen.alt = "imagen bonita";
+imagen.classList = "img-dom";
+imagen.id = "imagencita";
 
-const redireccionar = function () {
-  setTimeout(function () {
-    // location.href = "https://rollingcodeschool.com";
-    console.log("Hola que tal");
-  }, 3000);
-};
+document.body.appendChild(imagen);
 
-//setInterval
-//Nos permite ejecutar acciones CADA cierto tiempo
-let repetir;
+//Insertar un elemento antes de otro
 
-function contador() {
-  let num = 0;
-  repetir = setInterval(function () {
-    console.log(num++);
-  }, 1000);
+//reemplazar elemento
+let span = document.createElement("span");
+span.innerText = "Esto es una etiqueta span";
+
+document.body.replaceChild(span, parrafo2);
+
+//quitar un elemento
+document.body.removeChild(nuevoParrafo);
+
+//clonar un elemento
+document.body.appendChild(imagen.cloneNode(true));
+document.body.appendChild(imagen.cloneNode(true));
+
+//-----------------------------------------------
+let lista = document.getElementById("lista");
+let item = document.createElement("li");
+item.innerText = "Hacer la tarea que mandó Gaby";
+let ul = document.querySelector("ul");
+
+ul.appendChild(item);
+//-------------------------------------------------
+
+//Eventos-----------------------
+function mostrarMensaje() {
+  alert("Esto es un mensaje importante!!");
 }
 
-function segundero() {
-  repetir = setInterval(function () {
-    console.log(new Date().getSeconds());
-  }, 1000);
+function saludar(nombre) {
+  console.log(`Hola ${nombre}`);
 }
 
-//clearInterval
-//Detener los intervalos que yo defina
+function cambiarColor() {
+  document.querySelector("#campo").classList = "fondo";
+}
 
-const detenerIntervalo = function () {
-  clearInterval(repetir);
-};
+function quitarColor() {
+  document.querySelector("#campo").classList = "";
+}
+
+function cambioInput(e) {
+  console.log(e.target.value);
+  console.log(e.target.name);
+}
+
+let nombre = "";
+
+function obtenerNombre(e) {
+  nombre = e.target.value;
+}
+
+function inputSaludar() {
+  alert(`Bienvenido ${nombre}`);
+}
+
+let darkmode = false;
+
+function modoOscuro() {
+  if (!darkmode) {
+    document.body.classList = "dark-mode";
+    darkmode = true;
+  } else {
+    document.body.classList = "";
+    darkmode = false;
+  }
+}
+
+document
+  .getElementById("text_nombre")
+  .addEventListener("change", obtenerNombre);
+
+document.getElementById("toggle").addEventListener("click", modoOscuro);

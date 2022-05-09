@@ -81,8 +81,9 @@ function cambioInput(e) {
 
 let nombre = "";
 
-function obtenerNombre(e) {
-  nombre = e.target.value;
+function obtenerNombre() {
+  // nombre = e.target.value;
+  nombre = document.getElementById("text_nombre").value;
 }
 
 function inputSaludar() {

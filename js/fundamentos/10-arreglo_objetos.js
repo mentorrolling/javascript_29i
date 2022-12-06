@@ -77,8 +77,8 @@ function tarjetasPresentacion() {
 
 //3- Agregar un usuario más al final de la lista
 function agregarUsuario() {
-  let idNuevo = data[data.length - 1].id + 1;
-
+  // let idNuevo = data[data.length - 1].id + 1;
+  let idNuevo = data.at(-1).id + 1;
   let nombre = prompt("Ingrese el nombre del usuario");
   let apellido = prompt("Ingrese el apellido del usuario");
   let correo = prompt("Ingrese el correo del usuario");

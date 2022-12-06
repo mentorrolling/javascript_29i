@@ -116,6 +116,7 @@ if (edad >= 18 || tutor) {
   console.warn("Es menor de edad, no puede entrar 😞");
 }
 
+//-----------------------------------------------------------
 //Switch
 // switch (variable) {
 //   case 10:
@@ -209,6 +210,7 @@ switch (true) {
     break;
 }
 
+//EXTRA (opcional)
 // Se nos pide hacer un programa donde el usuario ingrese dos números y la operación a realizar. Según la operación (suma, resta, multiplicación y división) devolver en consola el resultado
 
 let num1 = parseFloat(prompt("Ingrese el primer número"));

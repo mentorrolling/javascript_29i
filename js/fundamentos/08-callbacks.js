@@ -108,3 +108,128 @@ function ordenarLenguajes() {
     console.log(`${index + 1} - ${lenguaje.toUpperCase()}`);
   });
 }
+
+//Aplicación de lista de compras
+
+/*
+- Agregar un producto a la lista
+- Listar los productos de la lista numerados
+- Eliminar un producto de la lista por su indice
+- Buscar un producto
+- Filtrar productos por una letra o palabra
+*/
+
+let lista = [];
+
+//agregar productos
+const addProducto = () => {
+  let producto = prompt("Ingrese el producto");
+  while (producto) {
+    lista.push(producto.toUpperCase());
+    alert(`El producto ${producto} fué agregado a la lista 👍`);
+    producto = prompt("Ingrese el producto");
+  }
+  alert("Finalizado el ingreso de productos");
+};
+
+//listar productos
+const listarProductos = () => {
+  document.body.innerHTML = "";
+  document.write("<h1>");
+  document.write("Lista de productos");
+  document.write("</h1>");
+  document.write("<ol>");
+  if (lista.length > 0) {
+    lista.forEach((producto) => {
+      document.write("<li>");
+      document.write(producto);
+      document.write("</li>");
+    });
+  } else {
+    document.write("No hay productos en la lista");
+  }
+  document.write("</ol>");
+};
+
+//borrar producto
+const borrarProducto = () => {
+  let buscar = prompt("Ingrese el producto que desea eliminar");
+  if (buscar) {
+    // let indice = lista.findIndex((producto) => {
+    //   return producto == buscar.toUpperCase();
+    // });
+
+    let indice = lista.indexOf(buscar.toUpperCase());
+    if (indice > -1) {
+      let validar = confirm(
+        "Está seguro que desea eliminar el producto " + lista[indice] + "?"
+      );
+      if (validar) {
+        lista.splice(indice, 1);
+        alert("Producto eliminado 👍");
+      }
+    } else {
+      alert("El producto no está en la lista");
+    }
+  } else {
+    alert("Se canceló la operación");
+  }
+};
+
+//Buscar un producto
+const buscarProducto = (producto = prompt("Ingrese el producto a buscar")) => {
+  if (producto) {
+    // let encontrado = lista.find((item) => {
+    //   return item == producto.toUpperCase();
+    // });
+    let encontrado = lista.includes(producto.toUpperCase());
+
+    if (encontrado) {
+      console.log(`El producto ${producto} está en la lista 👍`);
+    } else {
+      console.warn(`El producto ${producto} no está en la lista 😭`);
+    }
+  } else {
+    alert("Operación cancelada");
+  }
+};
+
+//filtrar productos
+
+const filtrarProductos = (termino = prompt("Ingrese el término a buscar")) => {
+  if (termino) {
+    let resultado = lista.filter((item) => {
+      return item.includes(termino.toUpperCase());
+    });
+    if (resultado.length > 0) {
+      console.log("Productos encontrados");
+      console.log("----------------");
+      for (let index = 0; index < resultado.length; index++) {
+        console.log(`${index + 1} - ${resultado[index]}`);
+      }
+    } else {
+      alert("No se encontraron coincidencias");
+    }
+  } else {
+    alert("Operación cancelada");
+  }
+};
+
+//modificar un producto
+const modificarProducto = (
+  producto = prompt("Ingrese el producto a modificar")
+) => {
+  let index = lista.indexOf(producto.toUpperCase());
+
+  if (index > -1) {
+    let nuevoValor = prompt("Ingrese el nuevo valor");
+    if (nuevoValor) {
+      lista.splice(index, 1, nuevoValor.toUpperCase());
+      alert("El producto ha sido modificado 👍");
+    } else {
+      alert("Se canceló la operación");
+    }
+  } else {
+    alert("No se encuentra el producto ingresado");
+  }
+};

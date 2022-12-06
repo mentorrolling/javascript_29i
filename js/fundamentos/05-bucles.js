@@ -33,16 +33,16 @@ if (frase.includes("u")) {
 
 // }
 
-let vecesSumar = 10;
+let vecesASumar = 10;
 let totalSuma = 0;
 
-while (vecesSumar > 0) {
+while (vecesASumar > 0) {
   totalSuma += 1;
   // totalSuma = totalSuma + 1
-  vecesSumar -= 1;
+  vecesASumar -= 1;
 
   console.log(
-    `Total de la suma: ${totalSuma} | veces que se sumó: ${vecesSumar}`
+    `Total de la suma: ${totalSuma} | veces que se sumó: ${vecesASumar}`
   );
 }
 console.log(`Total: ${totalSuma}`);
@@ -66,6 +66,35 @@ do {
   console.log(`Hola ${respuesta}! Bienvenid@ 🎉`);
   vueltas--;
 } while (vueltas > 0);
+
+//-----------Pokedex Do While y While-----------------------------
+let pokemon = "";
+let pokedex = "";
+
+// do {
+//     pokemon=prompt('Nombre del pokemon')
+//     if(pokemon){
+
+//         if(pokedex){
+
+//             pokedex=pokedex+" | "+pokemon
+//         }else {
+//             pokedex=pokemon
+//         }
+//     }
+// } while (pokemon);
+//-------------------------
+pokemon = prompt("Nombre del pokemon");
+while (pokemon) {
+  if (pokedex) {
+    pokedex = pokedex + " | " + pokemon;
+  } else {
+    pokedex = pokemon;
+  }
+  pokemon = prompt("Nombre del pokemon");
+}
+console.log(pokedex);
+//---------------------------------------
 
 //Tarea
 /*
@@ -97,6 +126,12 @@ if (acierto === false) {
 //   //tareas o acciones
 
 // }
+let cantidad = parseInt(prompt("Ingrese la cantidad de miembros del equipo"));
+
+for (let i = 0; i < cantidad; i++) {
+  let nombre = prompt("Ingrese el alias de un superhéroe");
+  console.log(`Bienvenido ${nombre} al equipo! 👍`);
+}
 
 //tarea
 //ingresar la tabla que queremos calcular
@@ -104,19 +139,22 @@ if (acierto === false) {
 let tablita = parseInt(prompt("Ingrese la tablita a calcular"));
 
 for (let i = 1; i <= 10; i++) {
-  console.log(`${tablita} x ${i} = ${tablita * i}`);
+  console.log(`${tablita} x ${i} = ${tablita * i}`.fontcolor("red"));
 }
 
-while (tabla) {
-  console.log("===================");
-  console.log(`Tabla del ${tabla}`);
-  console.log("===================");
-  for (let index = 1; index <= 10; index++) {
-    console.log(`${tabla} x ${index} = ${tabla * index}`);
-  }
-
+//Multiples tablas
+// let tabla = null;
+do {
   tabla = parseInt(prompt("Ingrese la tabla a calcular"));
-}
+  if (tabla) {
+    console.log("===================");
+    console.log(`Tabla del ${tabla}`);
+    console.log("===================");
+    for (let index = 1; index <= 10; index++) {
+      console.log(`${tabla} x ${index} = ${tabla * index}`);
+    }
+  }
+} while (tabla);
 
 // Tarea segun la cantidad de alumnos ingresada cargar los nombres
 
@@ -133,6 +171,7 @@ if (!isNaN(cantidadDeAlumnos)) {
       lista += `${nombre} \n`;
     } else {
       console.warn("Uno de los datos no fue válido");
+      i = cantidadDeAlumnos; //para que se termine el for
     }
   }
   console.log(lista);

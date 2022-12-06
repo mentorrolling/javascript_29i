@@ -108,7 +108,7 @@ function convertirACubo(arreglo, funcion) {
 
 console.log(convertirACubo(numeros, cubo));
 
-//Scope de una función
+//SCOPE de una función
 let heroe = "Superman";
 
 function presentarHeroe() {
@@ -168,10 +168,10 @@ La fórmula del perímetro  es p = 2*(a +b)
 */
 
 let ladoA = Number(prompt("Ingrese la altura del rectángulo"));
-let ladoB = Number(prompt("Ingrese el ancho del rectángulo"));
+let ladoB = Number(prompt("Ingrese la base del rectángulo"));
 
-const perimetroRectangulo = function (alto = 25, ancho = 10) {
-  return 2 * (alto + ancho);
+const perimetroRectangulo = function (altura = 25, base = 10) {
+  return 2 * (altura + base);
 };
 
 document.write(`El perímetro del rectángulo es de ${perimetroRectangulo()}`);

@@ -57,3 +57,65 @@ function segundero() {
 const detenerIntervalo = function () {
   clearInterval(repetir);
 };
+
+//Clse de muestra---------------05/12/22
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+function success(pos) {
+  const crd = pos.coords;
+
+  console.log("Tu ubicación actual es:");
+  console.log(`Latitud : ${crd.latitude}`);
+  console.log(`Longitud: ${crd.longitude}`);
+  console.log(`Más o menos ${crd.accuracy} metros.`);
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
+//BOM
+// navigator.onLine : Para saber si estoy conectado a internet
+
+// navigator.deviceMemory: Devuelve la info de memoria del dispositivo
+
+// navigator.geolocation: ubicación del dispositivo
+
+// location.assign
+// location.href
+// location.replace
+
+//history
+
+//time
+
+const inicio = () => {
+  document.write(`<h3>Redireccionando a la página principal...</h3>`);
+  setTimeout(() => {
+    location.assign("https://rollingcodeschool.com");
+  }, 2000);
+};
+
+let intervalo = null;
+const fechaActualizada = () => {
+  intervalo = setInterval(() => {
+    let fecha = new Date();
+    document.body.innerText = "";
+    document.write(`<h3>${fecha}<h3>`);
+  }, 1000);
+};
+
+const detener = () => {
+  clearInterval(intervalo);
+};
+
+// inicio();
+// fechaActualizada();
+
+//DOM---------------------------------------------------------

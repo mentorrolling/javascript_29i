@@ -29,8 +29,12 @@ let alumnos = ["Pablo", "Fabrizio", "Gabriela", "Lucas"];
 //mostrar un elemento
 alumnos[2]; //Gabriela
 
+//Cantidad de elementos en un array
+console.log(alumnos.length);
+
 //mostrar el último elemento
 alumnos[alumnos.length - 1];
+alumnos.at(-1);
 
 //Concatenar elementos en un string
 console.log(`Los alumnos más copados son: ${alumnos.join(", ")}`);
@@ -45,12 +49,12 @@ for (const alumno of alumnos) {
 }
 
 //Agregar un elemento al arreglo
-alumnos.push("Daniel", "Nayru");
-alumnos.unshift("Joaquin");
+alumnos.push("Daniel", "Nayru"); //al final
+alumnos.unshift("Joaquin"); //al principio
 
 //Eliminar elementos del arreglo
-alumnos.pop();
-alumnos.shift();
+alumnos.pop(); //al final
+alumnos.shift(); // al principio
 
 //Encotrar la posición o indice de un elemento
 console.log(alumnos.indexOf("Daniel"));

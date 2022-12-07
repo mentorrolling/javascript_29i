@@ -1,3 +1,12 @@
+class Usuario {
+  constructor(id, email, first_name, last_name, avatar) {
+    this.id = id;
+    this.email = email;
+    this.first_name = first_name;
+    (this.last_name = last_name), (this.avatar = avatar);
+  }
+}
+
 const data = [
   {
     id: 7,
@@ -109,14 +118,8 @@ const agregarUsuario = (event) => {
   let last_name = document.getElementById("apellido").value;
   let email = document.getElementById("correo").value;
   let avatar = document.getElementById("imagen").value;
-
-  data.push({
-    id,
-    first_name,
-    last_name,
-    email,
-    avatar,
-  });
+  let usuario = new Usuario(id, email, first_name, last_name, avatar);
+  data.push(usuario);
   document.getElementById("nombre").value = "";
   document.getElementById("apellido").value = "";
   document.getElementById("correo").value = "";

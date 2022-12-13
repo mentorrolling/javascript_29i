@@ -125,7 +125,11 @@ const listarProductos = (array) => {
     }">
     </div>
     <div class="card-body pb-0">
-      <h5 class="card-title">${item.title}</h5>
+      <h5 class="card-title">
+      <a class="nav-link" href="./pages/producto.html?${item.id}">
+            ${item.title}
+            </a>
+      </h5>
     </div> 
     <div class="d-flex p-2 justify-content-end text-muted" >
     <i class="${

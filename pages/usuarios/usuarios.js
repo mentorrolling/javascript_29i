@@ -58,8 +58,9 @@ const data = JSON.parse(localStorage.getItem("usuarios")) || [];
 
 let contenedorCrads = document.getElementById("contenedor-cards");
 
-const listarUsuarios = () => {
-  data.map((item) => {
+const listarUsuarios = (array) => {
+  contenedorCrads.innerHTML = "";
+  array.map((item) => {
     let columna = document.createElement("div");
     columna.classList = "col";
 
@@ -112,7 +113,7 @@ const ordenarPorApellido = (valor = 0) => {
   if (valor != 0) {
     data.reverse();
   }
-  listarUsuarios();
+  listarUsuarios(data);
 };
 
 const agregarUsuario = (event) => {
@@ -132,4 +133,16 @@ const agregarUsuario = (event) => {
   ordenarPorApellido();
 };
 
-listarUsuarios();
+const filtrarUsuario = (event) => {
+  event.preventDefault();
+  let termino = document.querySelector("#textBuscar").value;
+
+  let filtro = data.filter((item) => {
+    return item.last_name.toUpperCase().includes(termino.toUpperCase());
+  });
+
+  // console.log(filtro);
+  listarUsuarios(filtro);
+};
+
+listarUsuarios(data);

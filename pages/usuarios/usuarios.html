@@ -20,13 +20,16 @@
         </div>
       </div>
       <div class="row my-3">
-        <div class="col">
+        <div class="col d-flex gap-3">
           <button onclick="ordenarPorApellido(0)" class="btn btn-primary">
             Ordenar A-Z
           </button>
           <button onclick="ordenarPorApellido(1)" class="btn btn-primary">
             Ordenar Z-A
           </button>
+          <form onsubmit="filtrarUsuario(event)">
+            <input type="text" class="form-control" id="textBuscar" />
+          </form>
         </div>
       </div>
       <div class="row row-cols-1 row-cols-md-3 g-4" id="contenedor-cards">

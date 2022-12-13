@@ -20,8 +20,9 @@ class Producto {
 
 let contenedorTabla = document.querySelector("#contenedor-tabla");
 let cuerpoTabla = document.querySelector("#cuerpo-tabla");
-
+const myModal = new bootstrap.Modal(document.getElementById("productoModal"));
 let productos = JSON.parse(localStorage.getItem("productos")) || [];
+let indexUpdate = null;
 
 const cargarTabla = () => {
   cuerpoTabla.innerHTML = "";
@@ -32,9 +33,13 @@ const cargarTabla = () => {
         <td>${item.category}</td>
         <td>$${item.price}</td>
         <td>
-        <div>
+        <div class=" d-flex gap-2">
+        <i class="fa fa-pencil text-success puntero" onclick="abrirModalProducto(${item.id})" aria-hidden="true"></i>
             <i class="fa fa-trash-o text-danger puntero" onclick="eliminarProducto(${item.id})" aria-hidden="true"></i>
-            </div>
+           
+        </div>
+        
+       
         </td>`;
 
     tr.innerHTML = cuerpo;
@@ -92,5 +97,38 @@ const eliminarProducto = (id) => {
   }
 };
 //---------------------------------
+
+//Abrir modal para actualizar Producto
+const abrirModalProducto = (id) => {
+  indexUpdate = productos.findIndex((item) => {
+    return item.id == id;
+  });
+
+  document.querySelector("#tituloModal").value = productos[indexUpdate].title;
+  document.querySelector("#precioModal").value = productos[indexUpdate].price;
+  document.querySelector("#descripcionModal").value =
+    productos[indexUpdate].description;
+  document.querySelector("#categoriaModal").value =
+    productos[indexUpdate].category;
+  document.querySelector("#imagenModal").value = productos[indexUpdate].image;
+
+  myModal.show();
+};
+
+//Actualizar datos de producto
+const actualizarProducto = (event) => {
+  event.preventDefault();
+  productos[indexUpdate].title = document.querySelector("#tituloModal").value;
+  productos[indexUpdate].description =
+    document.querySelector("#descripcionModal").value;
+  productos[indexUpdate].category =
+    document.querySelector("#categoriaModal").value;
+  productos[indexUpdate].price = document.querySelector("#precioModal").value;
+  productos[indexUpdate].image = document.querySelector("#imagenModal").value;
+
+  localStorage.setItem("productos", JSON.stringify(productos));
+  myModal.hide();
+  cargarTabla();
+};
 
 cargarTabla();

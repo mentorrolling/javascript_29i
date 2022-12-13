@@ -40,6 +40,12 @@
                   ><i class="fa fa-star" aria-hidden="true"></i>Favoritos</a
                 >
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#"
+                  ><i class="fa fa-server" aria-hidden="true"></i
+                  >Administración</a
+                >
+              </li>
             </ul>
           </div>
         </div>
@@ -48,7 +54,7 @@
     <main class="container">
       <div class="row my-3">
         <div class="col">
-          <h1>Administración 🤓</h1>
+          <h1>Administración 📊</h1>
         </div>
       </div>
 
@@ -57,8 +63,8 @@
           <h3>Cargar producto 📝</h3>
         </div>
       </div>
-      <div class="row my-3">
-        <div class="col-12 col-md-8 offset-md-2">
+      <div class="row mb-5">
+        <div class="col-12 col-md-8 offset-md-2 borde_form">
           <form onsubmit="guardarProducto(event)">
             <div class="row mb-2">
               <div class="col">
@@ -93,6 +99,7 @@
                   id="categoria"
                 >
                   <option selected>Seleccione una categoría</option>
+                  <option value="electronics">electronics</option>
                   <option value="Periféricos">Periféricos</option>
                   <option value="Accesorios">Accesorios</option>
                   <option value="Storage">Storage</option>
@@ -106,7 +113,7 @@
                   class="form-control"
                   min="0"
                   value="0"
-                  max="9999999"
+                  step="0.01"
                   required
                   id="precio"
                 />
@@ -151,6 +158,103 @@
       </div>
     </main>
     <footer></footer>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="productoModal"
+      tabindex="-1"
+      aria-labelledby="productoModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="productoModalLabel">
+              Modal title
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="actualizarProducto(event)">
+              <div class="row mb-2">
+                <div class="col">
+                  <label>Título</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    required
+                    id="tituloModal"
+                  />
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <textarea
+                    class="form-control"
+                    rows="5"
+                    required
+                    id="descripcionModal"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <label>Categoría</label>
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    required
+                    id="categoriaModal"
+                  >
+                    <option selected>Seleccione una categoría</option>
+                    <option value="electronics">electronics</option>
+
+                    <option value="Periféricos">Periféricos</option>
+                    <option value="Accesorios">Accesorios</option>
+                    <option value="Storage">Storage</option>
+                    <option value="Monitores">Monitores</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label>Precio</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    min="0"
+                    value="0"
+                    step="0.01"
+                    required
+                    id="precioModal"
+                  />
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <label>Imagen de producto</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    required
+                    id="imagenModal"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col d-flex justify-content-end">
+                  <button class="btn btn-dark">Guardar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

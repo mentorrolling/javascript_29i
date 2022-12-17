@@ -18,11 +18,33 @@ class Producto {
   }
 }
 
+let main = document.querySelector("#main");
 let contenedorTabla = document.querySelector("#contenedor-tabla");
 let cuerpoTabla = document.querySelector("#cuerpo-tabla");
 const myModal = new bootstrap.Modal(document.getElementById("productoModal"));
 let productos = JSON.parse(localStorage.getItem("productos")) || [];
 let indexUpdate = null;
+
+const validarUsuario = () => {
+  let usuario = JSON.parse(localStorage.getItem("user")) || null;
+
+  if (usuario?.correo !== "admin@admin.com") {
+    main.innerHTML = "";
+    let col = document.createElement("div");
+    col.classList = "row mt-3";
+
+    let contenido = `<div class="col-12 col-md-6 offset-md-3">
+    <div class="alert alert-danger" role="alert">
+    No dispone de los permisos para acceder a este sitio
+  </div>
+  </div>`;
+
+    col.innerHTML = contenido;
+    return main.append(col);
+  } else {
+    cargarTabla();
+  }
+};
 
 const cargarTabla = () => {
   cuerpoTabla.innerHTML = "";
@@ -131,4 +153,5 @@ const actualizarProducto = (event) => {
   cargarTabla();
 };
 
-cargarTabla();
+// cargarTabla();
+validarUsuario();

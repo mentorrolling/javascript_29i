@@ -16,3 +16,8 @@
 .contenedor-img {
   height: 300px;
 }
+
+.login-cabecera {
+  height: 200px;
+  object-fit: cover;
+}

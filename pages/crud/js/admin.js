@@ -1,23 +1,3 @@
-class Producto {
-  constructor(
-    id,
-    title,
-    price,
-    description,
-    category,
-    image,
-    favorito = false
-  ) {
-    this.id = id;
-    this.title = title;
-    this.price = price;
-    this.description = description;
-    this.category = category;
-    this.image = image;
-    this.favorito = favorito;
-  }
-}
-
 let main = document.querySelector("#main");
 let contenedorTabla = document.querySelector("#contenedor-tabla");
 let cuerpoTabla = document.querySelector("#cuerpo-tabla");
@@ -72,6 +52,7 @@ const cargarTabla = () => {
 //Crear producto-----------------
 const guardarProducto = (event) => {
   event.preventDefault();
+
   let id = new Date().getTime();
   let titulo = document.querySelector("#titulo").value;
   let descripcion = document.querySelector("#descripcion").value;

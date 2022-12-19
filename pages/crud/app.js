@@ -1,26 +1,3 @@
-class Producto {
-  constructor(
-    id,
-    title,
-    price,
-    description,
-    category,
-    image,
-    favorito = false
-  ) {
-    this.id = id;
-    this.title = title;
-    this.price = price;
-    this.description = description;
-    this.category = category;
-    this.image = image;
-    this.favorito = favorito;
-  }
-  // marcarFavorito() {
-  //   this.favorito = !this.favorito;
-  // }
-}
-
 const productos = JSON.parse(localStorage.getItem("productos")) || [];
 
 const inicializacion = () => {
@@ -114,6 +91,7 @@ const inicializacion = () => {
 let contenedor = document.querySelector("#contenedor");
 const listarProductos = (array) => {
   contenedor.innerHTML = "";
+  let arrayProductos = [];
   array.map((item) => {
     let columna = document.createElement("div");
     columna.classList = "col mb-3";
@@ -139,9 +117,9 @@ const listarProductos = (array) => {
   </div>`;
 
     columna.innerHTML = tarjeta;
-
-    contenedor.append(columna);
+    arrayProductos.push(columna);
   });
+  contenedor.append(...arrayProductos);
 };
 
 const marcarFavorito = (id) => {
